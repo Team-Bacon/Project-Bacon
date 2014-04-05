@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+//i like turtles
 var app = {
     // Application Constructor
     initialize: function() {
