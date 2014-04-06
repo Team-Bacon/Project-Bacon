@@ -55,8 +55,18 @@ h1 {
     text-align:center;
 }
 
-.ui-grid-a {
+.menu-buttons {
+    height: 100%;
 	font-size:40px;
+}
+
+.menu-buttons div {
+    height: 33.333333%;
+}
+
+.menu-buttons div >a {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
 }
 
 .event {
