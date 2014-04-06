@@ -84,19 +84,28 @@ var app = {
 	},
 
 	populateList: function(items, list) {
+		var listItem;
 		for (var i = 0; i < items.length; i++) {
 			if (items[i].lunch) {
 				console.log("Appending Lunch item");
-				list.append(this.createListItem(items[i].lunch));
+				listItem = $(this.createListItem(items[i].lunch));
 			} else {
 				console.log("Appending Dinner item");
-				list.append(this.createListItem(items[i].dinner));
+				listItem = $(this.createListItem(items[i].dinner));
 			}
+			// Set click handler
+			listItem.click(setFoodClick);
+			// Append to list
+			list.append(listItem);
 		}
 	},
 
+	// <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" 
+	// class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b" 
+	// aria-haspopup="true" aria-owns="popupDialog" aria-expanded="false">Delete page...</a>
+
 	createListItem: function(item) {
-		return ('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">' + item + '</a></li>');
+		return ('<li><a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-btn-icon-right ui-icon-carat-r">' + item + '</a></li>');
 	},
 
 	createDivider: function(name) {
@@ -118,3 +127,12 @@ function kimonoCallback(data) {
 		console.log("Failed to get Kimono data");
 	}
 }
+
+function setFoodClick(event) {
+	console.log("Food Clicked");
+	var food = event.currentTarget.firstChild.firstChild.data;
+	console.log(food);
+	$("#foodItemName").text(food);
+}
+
+// function itemClicked
