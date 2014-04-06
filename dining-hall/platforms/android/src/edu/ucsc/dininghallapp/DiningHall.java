@@ -21,17 +21,21 @@ package edu.ucsc.dininghallapp;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
+import com.parse.*;
 
 public class DiningHall extends CordovaActivity 
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
         super.init();
         // Set by <content src="index.html" /> in config.xml
         super.loadUrl(Config.getStartUrl());
         //super.loadUrl("file:///android_asset/www/index.html");
+        
+        Parse.initialize(this, "RZ05mGnElN6g1Ht3nKIrdZ74iRQOdglfTsR8QUtf", "D6nvjIro6mg173U7cnsZo0MS9h5JxTwPuLIC4xXm");
+        PushService.subscribe(this, "", DiningHall.class);
     }
 }
 

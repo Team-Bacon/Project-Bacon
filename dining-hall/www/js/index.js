@@ -39,6 +39,12 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         $("#menu").height($(window).height() - 40);
+        
+        console.log("does this work??");
+        
+        cordova.exec(function(success) {console.log("we did it everyone!")}, function(error) {}, "HelloWorldPlugin", "sayHello", []) ;
+
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
