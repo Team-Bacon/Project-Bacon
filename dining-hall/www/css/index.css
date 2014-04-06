@@ -47,7 +47,7 @@ body {
 
 
 h1 {
-    font-size:24px;
+    font-size:2em;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -70,6 +70,11 @@ h1 {
 	background-color: #3e3a40;
     margin-top: 0.2em;
     margin-bottom: 0.2em;
+}
+
+/* Food List */
+#foodList li {
+    font-size: 1.5em;
 }
 
 .event {

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-//i like turtles 
-//me too
-//What is a Turtle?
+var foodItems = {};
+
 var app = {
 	// Application Constructor
 	initialize: function() {
@@ -46,13 +45,16 @@ var app = {
 	},
 
 	fetchFoodItems: function() {
-		var url = this.buildUrl();
-		console.log(url);
-		$.ajax({
-			"url":url,
-			"crossDomain":true,
-			"dataType":"jsonp"
-		});
+		var url; 
+		for (var i = 0; i < locationNums.length; i++) {
+			url = this.buildUrl(locationNums[i]);
+			console.log(url);
+			$.ajax({
+				"url":url,
+				"crossDomain":true,
+				"dataType":"jsonp"
+			});
+		}
 	},
 
 	// <ul data-role="listview" data-filter="true" data-filter-placeholder="Search fruits..." data-inset="true">
@@ -64,8 +66,8 @@ var app = {
 	// <li><a href="#">Orange</a></li>
 	// </ul>
 
-	buildUrl: function() {
-		return ("http://www.kimonolabs.com/api/3h13ss3m?apikey=07783e2151f40eda9c2a00d625232a54&locationNum=" + locationNum + "&callback=kimonoCallback");
+	buildUrl: function(locationNum) {
+		return ("http://www.kimonolabs.com/api/3h13ss3m?apikey=07783e2151f40eda9c2a00d625232a54&locationNum=" + locationNum + "&callback=kimonoCallback" + locationNum);
 	},
 
 	createList: function(items) {
@@ -81,6 +83,30 @@ var app = {
 			});
 		}
 		return list;
+	},
+
+	crossCheckList: function(items, college) {
+		var list = app.createList();
+		var listItem, listItemName;
+		for (var i = 0; i < items.length; i++) {
+			if (items[i].lunch) {
+				listItemName = items[i].lunch;
+			} else {
+				listItemName = items[i].dinner;
+			}
+			if(!foodItems[listItemName]) {
+				console.log("New Menu Item Found");
+				foodItems[listItemName] = [];
+				// New food item
+				listItem = $(this.createListItem(listItemName));
+				// Set click handler
+				listItem.click(setFoodClick);
+				// Append to list
+				list.append(listItem);
+			}
+			foodItems[listItemName].push(college);
+		}
+		list.trigger("change");
 	},
 
 	populateList: function(items, list) {
@@ -113,15 +139,31 @@ var app = {
 	}
 };
 
-function kimonoCallback(data) {
+function kimonoCallback05(data) {
+	kimonoCallback(data, "Cowell");
+}
+
+function kimonoCallback20(data) {
+	kimonoCallback(data, "Crown");
+}
+
+function kimonoCallback25(data) {
+	kimonoCallback(data, "Porter");
+}
+
+function kimonoCallback30(data) {
+	kimonoCallback(data, "Eight");
+}
+
+function kimonoCallback40(data) {
+	kimonoCallback(data, "Nine");
+}
+
+function kimonoCallback(data, college) {
 	if (data.lastrunstatus === "success") {
 		console.log("Success retrieving Kimono data");
-		var list = app.createList();
-		list.append(app.createDivider(data.results.collection1[0].meal));
-		app.populateList(data.results.collection2, list);
-		list.append(app.createDivider(data.results.collection1[1].meal));
-		app.populateList(data.results.collection3, list);
-		list.trigger("change");
+		app.crossCheckList(data.results.collection2, college);
+		app.crossCheckList(data.results.collection3, college);
 	} else {
 		console.log("Failed to get Kimono data");
 	}
@@ -131,5 +173,3 @@ function setFoodClick(event) {
 	var food = event.currentTarget.firstChild.firstChild.data;
 	$("#foodItemName").text(food);
 }
-
-// function itemClicked
