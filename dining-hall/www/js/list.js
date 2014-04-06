@@ -114,9 +114,9 @@ var app = {
 };
 
 function kimonoCallback(data) {
+	var list = app.createList();
 	if (data.lastrunstatus === "success") {
 		console.log("Success retrieving Kimono data");
-		var list = app.createList();
 		list.append(app.createDivider(data.results.collection1[0].meal));
 		app.populateList(data.results.collection2, list);
 		list.append(app.createDivider(data.results.collection1[1].meal));
@@ -124,6 +124,7 @@ function kimonoCallback(data) {
 		list.trigger("change");
 	} else {
 		console.log("Failed to get Kimono data");
+		list.append(app.createDivider("This Dining Hall is CLOSED"));
 	}
 }
 
