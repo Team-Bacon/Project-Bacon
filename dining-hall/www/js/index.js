@@ -38,6 +38,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        $("#menu").height($(window).height() - 40);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

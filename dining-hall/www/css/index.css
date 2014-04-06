@@ -24,16 +24,16 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-color:#3e3a40;
+    background-image:linear-gradient(top, #3e3a40 0%, #3e3a40 51%);
+    background-image:-webkit-linear-gradient(top, #3e3a40 0%, #3e3a40 51%);
+    background-image:-ms-linear-gradient(top, #3e3a40 0%, #3e3a40 51%);
     background-image:-webkit-gradient(
         linear,
         left top,
         left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
+        color-stop(0, #3e3a40),
+        color-stop(0.51, #3e3a40)
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
@@ -56,15 +56,18 @@ h1 {
 }
 
 .menu-buttons {
+	background-color: #3e3a40; 
     height: 100%;
 	font-size:40px;
 }
 
 .menu-buttons div {
+	
     height: 33.333333%;
 }
 
 .menu-buttons div >a {
+	background-color: #3e3a40;
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
@@ -79,12 +82,12 @@ h1 {
 }
 
 .event.listening {
-    background-color:#333333;
+    background-color:#3e3a40;
     display:block;
 }
 
 .event.received {
-    background-color:#4B946A;
+    background-color:#3e3a40;
     display:none;
 }
 
