@@ -19,6 +19,7 @@
 
 //i like turtles 
 //me too
+//What is a Turtle?
 var app = {
     // Application Constructor
     initialize: function() {
