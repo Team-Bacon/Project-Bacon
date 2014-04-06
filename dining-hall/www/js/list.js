@@ -129,9 +129,7 @@ function kimonoCallback(data) {
 }
 
 function setFoodClick(event) {
-	console.log("Food Clicked");
 	var food = event.currentTarget.firstChild.firstChild.data;
-	console.log(food);
 	$("#foodItemName").text(food);
 }
 
