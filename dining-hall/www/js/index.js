@@ -17,7 +17,8 @@
  * under the License.
  */
 
-//i like turtles
+//i like turtles 
+//me too
 var app = {
     // Application Constructor
     initialize: function() {
