@@ -1,0 +1,13 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {},
+    "installed_plugins": {
+        "69": {
+            "PACKAGE_NAME": "edu.ucsc.dininghallapp"
+        }
+    },
+    "dependent_plugins": {}
+}
