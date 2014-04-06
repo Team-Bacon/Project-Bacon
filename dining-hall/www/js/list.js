@@ -117,7 +117,6 @@ function kimonoCallback(data) {
 	if (data.lastrunstatus === "success") {
 		console.log("Success retrieving Kimono data");
 		var list = app.createList();
-		$(".app").append(list);
 		list.append(app.createDivider(data.results.collection1[0].meal));
 		app.populateList(data.results.collection2, list);
 		list.append(app.createDivider(data.results.collection1[1].meal));
