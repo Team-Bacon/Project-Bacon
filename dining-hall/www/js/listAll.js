@@ -85,22 +85,26 @@ var app = {
 		return list;
 	},
 
-	crossCheckList: function(items) {
+	crossCheckList: function(items, college) {
 		var list = app.createList();
-		var listItemName;
+		var listItem, listItemName;
 		for (var i = 0; i < items.length; i++) {
 			if (items[i].lunch) {
-				console.log("Appending Lunch item");
 				listItemName = items[i].lunch;
 			} else {
-				console.log("Appending Dinner item");
 				listItemName = items[i].dinner;
 			}
-			listItem = $(this.createListItem(listItemName));
-			// Set click handler
-			listItem.click(setFoodClick);
-			// Append to list
-			list.append(listItem);
+			if(!foodItems[listItemName]) {
+				console.log("New Menu Item Found");
+				foodItems[listItemName] = [];
+				// New food item
+				listItem = $(this.createListItem(listItemName));
+				// Set click handler
+				listItem.click(setFoodClick);
+				// Append to list
+				list.append(listItem);
+			}
+			foodItems[listItemName].push(college);
 		}
 		list.trigger("change");
 	},
@@ -158,8 +162,8 @@ function kimonoCallback40(data) {
 function kimonoCallback(data, college) {
 	if (data.lastrunstatus === "success") {
 		console.log("Success retrieving Kimono data");
-		app.crossCheckList(data.results.collection2);
-		app.crossCheckList(data.results.collection3);
+		app.crossCheckList(data.results.collection2, college);
+		app.crossCheckList(data.results.collection3, college);
 	} else {
 		console.log("Failed to get Kimono data");
 	}
