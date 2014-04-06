@@ -135,3 +135,4 @@ dining-hall/platforms/android/CordovaLib/bin
 .classpath
 dining-hall/platforms/android/assets
 dining-hall/platforms/ios/www
+BuildConfig.java
