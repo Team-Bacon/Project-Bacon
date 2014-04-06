@@ -77,6 +77,10 @@ h1 {
     font-size: 1.5em;
 }
 
+#foodList .ui-li-divider {
+    background-color: #01856B;
+}
+
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
