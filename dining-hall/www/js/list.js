@@ -83,8 +83,7 @@ var app = {
 		return list;
 	},
 
-	populateList: function(items) {
-		var list = this.createList();
+	populateList: function(items, list) {
 		for (var i = 0; i < items.length; i++) {
 			if (items[i].lunch) {
 				console.log("Appending Lunch item");
@@ -111,9 +110,9 @@ function kimonoCallback(data) {
 		var list = app.createList();
 		$(".app").append(list);
 		list.append(app.createDivider(data.results.collection1[0].meal));
-		app.populateList(data.results.collection2);
+		app.populateList(data.results.collection2, list);
 		list.append(app.createDivider(data.results.collection1[1].meal));
-		app.populateList(data.results.collection3);
+		app.populateList(data.results.collection3, list);
 	} else {
 		console.log("Failed to get Kimono data");
 	}
