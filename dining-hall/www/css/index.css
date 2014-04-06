@@ -53,7 +53,7 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
-    color: #06cba4;
+    color: #FFFFFF;
 }
 
 .menu-buttons {
@@ -81,6 +81,8 @@ h1 {
 #foodList .ui-li-divider {
     background-color: #01856B;
 }
+
+.ui-header
 
 .event {
     border-radius:4px;
