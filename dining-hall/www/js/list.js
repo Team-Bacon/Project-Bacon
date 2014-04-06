@@ -113,6 +113,7 @@ function kimonoCallback(data) {
 		app.populateList(data.results.collection2, list);
 		list.append(app.createDivider(data.results.collection1[1].meal));
 		app.populateList(data.results.collection3, list);
+		list.trigger("change");
 	} else {
 		console.log("Failed to get Kimono data");
 	}
